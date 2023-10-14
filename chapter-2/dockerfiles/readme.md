@@ -27,4 +27,4 @@ OR
 docker run --name kuard -p 8080:8080 gcr.io/kuar-demo/kuard-amd64:blue
 ```
 
-FYI, multistage build example is present
+**FYI, multistage build example is present**
