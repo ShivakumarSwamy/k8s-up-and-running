@@ -51,7 +51,7 @@ kubectl exec -it <pod-name> -- bash
 ```shell
 kubectl port-forward <pod-name> <local-port>:<container-port>
 ```
-
+Note: port forward a service object, will lead request got to only one pod and not load balance between pods 
 
 # k8s context (minimal)
 ```text
