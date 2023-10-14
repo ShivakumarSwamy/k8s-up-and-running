@@ -6,6 +6,15 @@ OR
 docker kill $(docker ps --quiet --latest)
 ```
 
+# build image
+```shell
+docker build --tag <image_name> .
+```
+
+# run image and remove on exit
+```shell
+docker run --rm -p 3000:3000 image_name
+```
 
 Note: 
 Order the dockerfile layers from least likely to change to most likely to change in order to optimize
