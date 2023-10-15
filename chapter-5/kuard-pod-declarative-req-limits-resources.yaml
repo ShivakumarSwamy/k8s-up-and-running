@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  # name of pod
+  name: kuard
+spec:
+  containers:
+    - image: gcr.io/kuar-demo/kuard-amd64:blue
+      # name of container
+      name: kuard
+      # port to publish
+      ports:
+        - containerPort: 8080
+          # name of port
+          name: http
+          protocol: TCP
+      resources:
+        requests:
+          cpu: "500m"
+          memory: "128Mi"
+        limits:
+          cpu: "1000m"
+          memory: "256Mi"
