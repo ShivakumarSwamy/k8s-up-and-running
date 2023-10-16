@@ -2,7 +2,7 @@ primer on book https://www.oreilly.com/library/view/kubernetes-up-and/9781098110
 
 ![](https://learning.oreilly.com/library/cover/9781098110192/250w/)
 
-example are using kubectl version
+examples are using kubectl version
 ```shell
 kubectl version --output=yaml
 ```
