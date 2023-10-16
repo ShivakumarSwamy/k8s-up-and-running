@@ -4,7 +4,7 @@ primer on book https://www.oreilly.com/library/view/kubernetes-up-and/9781098110
 
 example are using kubectl version
 ```shell
-kubectl delete replicasets.apps kuard --cascade=orphan
+kubectl version --output=yaml
 ```
 ```yaml
 clientVersion:
