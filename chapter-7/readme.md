@@ -7,7 +7,7 @@
   - nodePort: in addition to cluster ip, evey node in the cluster expose port to reach the service
   - loadBalancer: external cloud provider public or internal
 - endpoints k8s object contains pod ip address of the service 
-
+- manual service discovery can be done via selector and kubectl command
 
 ```shell
 kubectl apply -f alpaca-prod-deployment.yaml -f bandicoot-prod-deployment.yaml
