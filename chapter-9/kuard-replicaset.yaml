@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: kuard
+  # not related to selector labels for pods
+  labels:
+    app: kuard
+    version: "2"
+# replica spec
+spec:
+  replicas: 1
+  selector:
+    # labels to look out in pods (AND operator)
+    matchLabels:
+      app: kuard
+      version: "2"
+  # pod template
+  template:
+    metadata:
+      labels:
+        app: kuard
+        version: "2"
+    # pod spec
+    spec:
+      containers:
+        - name: kuard
+          image: "gcr.io/kuar-demo/kuard-amd64:green"
