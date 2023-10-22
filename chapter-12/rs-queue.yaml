@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: queue
+  # not related to selector labels for pods
+  labels:
+    app: work-queue
+    component: queue
+    chapter: jobs
+# replica spec
+spec:
+  replicas: 1
+  selector:
+    # labels to look out in pods (AND operator)
+    matchLabels:
+      app: work-queue
+      component: queue
+      chapter: jobs
+  # pod template
+  template:
+    metadata:
+      labels:
+        app: work-queue
+        component: queue
+        chapter: jobs
+    # pod spec
+    spec:
+      containers:
+        - name: queue
+          image: "gcr.io/kuar-demo/kuard-amd64:blue"
+          imagePullPolicy: Always

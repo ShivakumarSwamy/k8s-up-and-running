@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: queue
+  # not related to selector labels for pods
+  labels:
+    app: work-queue
+    component: queue
+    chapter: jobs
+# service spec
+spec:
+  # ports exposed by service
+  ports:
+    - port: 8080 # port exposed by service
+      protocol: TCP
+      targetPort: 8080 # port accessed on pod
+  selector:
+    # labels to look out in pods (AND operator)
+    app: work-queue
+    component: queue

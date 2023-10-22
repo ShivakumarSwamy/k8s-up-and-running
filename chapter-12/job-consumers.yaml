@@ -1,0 +1,34 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: consumers
+  # not related to selector labels for pods
+  labels:
+    app: message-queue
+    component: consumer
+    chapter: jobs
+# job spec
+spec:
+  # max 5 pods can run in parallel
+  parallelism: 5
+  # pod template
+  template:
+    metadata:
+      labels:
+        app: message-queue
+        component: consumer
+        chapter: jobs
+    # pod spec
+    spec:
+      containers:
+        - name: worker
+          image: gcr.io/kuar-demo/kuard-amd64:blue
+          imagePullPolicy: Always
+          command:
+            - "/kuard"
+          args:
+            - "--keygen-enable"
+            - "--keygen-exit-on-complete"
+            - "--keygen-memq-server=http://queue:8080/memq/server"
+            - "--keygen-memq-queue=keygen"
+      restartPolicy: OnFailure

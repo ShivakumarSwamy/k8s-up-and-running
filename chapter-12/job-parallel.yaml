@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: parallel
+  # not related to selector labels for pods
+  labels:
+    chapter: jobs
+# job spec
+spec:
+  # max 5 pods can run in parallel
+  parallelism: 5
+  # need 10 pods to completed for the job to succeeded
+  completions: 10
+  # pod template
+  template:
+    metadata:
+      labels:
+        chapter: jobs
+    # pod spec
+    spec:
+      containers:
+        - name: kuard
+          image: gcr.io/kuar-demo/kuard-amd64:blue
+          imagePullPolicy: Always
+          command:
+            - "/kuard"
+          args:
+            - "--keygen-enable"
+            - "--keygen-exit-on-complete"
+            - "--keygen-num-to-gen=3"
+      restartPolicy: OnFailure
