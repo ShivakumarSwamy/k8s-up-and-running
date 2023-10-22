@@ -5,8 +5,8 @@
 - reconciliation loop
   - desired state vs current state
   - when we apply via k8 we give k8s a desired state
-  - due to reconciliation os k8s, the current state is matched to desired state
-- notion of 'coming in the front door'
+  - due to reconciliation in k8s, the current state is matched to desired state
+  - notion of 'coming in the front door'
   - ReplicaSet do not own the Pods they create
   - ReplicaSet uses label queries to identify pods and make api call to satisfy desired state to create pods
 
