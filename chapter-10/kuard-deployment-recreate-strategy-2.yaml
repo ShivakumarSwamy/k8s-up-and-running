@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kuard
+  # not related to selector labels for pods
+  labels:
+    run: kuard
+# deployment spec
+spec:
+  # updates the ReplicaSet without creating new ReplicaSet like RollingUpdate
+  strategy:
+    type: Recreate
+  replicas: 2
+  selector:
+    # labels to look out in replicaset (AND operator)
+    matchLabels:
+      run: kuard
+  # pod template
+  template:
+    metadata:
+      labels:
+        run: kuard
+    # pod spec
+    spec:
+      containers:
+        - name: kuard
+          image: "gcr.io/kuar-demo/kuard-amd64:blue"

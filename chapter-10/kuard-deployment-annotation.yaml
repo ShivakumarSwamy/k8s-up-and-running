@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kuard
+  # not related to selector labels for pods
+  labels:
+    run: kuard
+# deployment spec
+spec:
+  replicas: 2
+  selector:
+    # labels to look out in replicaset (AND operator)
+    matchLabels:
+      run: kuard
+  # template changes leads to new deployment
+  # pod template
+  template:
+    metadata:
+      labels:
+        run: kuard
+      annotations:
+        # leads to new deployment
+        kubernetes.io/change-cause: "Update to green kuard"
+    # pod spec
+    spec:
+      containers:
+        - name: kuard
+          image: "gcr.io/kuar-demo/kuard-amd64:blue"
